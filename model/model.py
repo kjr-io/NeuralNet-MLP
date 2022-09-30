@@ -2,7 +2,7 @@ import sys
 import os
 import numpy as np
 
-sys.path.append('/Users/kyleryan/Documents/GitHub/NeuralNet-MLP/src')
+sys.path.append(str(f'{os.getcwd()}/src'))
 
 from network import Network
 from fc_layer import FCLayer
@@ -10,18 +10,25 @@ from activation_layer import ActivationLayer
 from activation_layer import tanh, tanh_prime
 from loss_func import mse, mse_prime
 
-x_train = np.array([[[0,0]], [[0,1]], [[1,0]], [[1,1]]])
-y_train = np.array([[[0]], [[1]], [[1]], [[0]]])
+sys.path.append(str(f'{os.getcwd()}/input'))
+from binaryop_data import *
+
+x_train, y_train = xor_data()
+
 
 # Creating the Network
-net = Network()
-net.add(FCLayer(2, 3))
-net.add(ActivationLayer(tanh, tanh_prime))
-net.add(FCLayer(3, 1))
-net.add(ActivationLayer(tanh, tanh_prime))
+def create_network(x_train, y_train):
+    net = Network()
+    net.add(FCLayer(2, 3))
+    net.add(ActivationLayer(tanh, tanh_prime))
+    net.add(FCLayer(3, 1))
+    net.add(ActivationLayer(tanh, tanh_prime))
 
-net.use(mse, mse_prime)
-net.fit(x_train, y_train, epochs = 10000, learning_rate = 0.1)
+    net.use(mse, mse_prime)
+    net.fit(x_train, y_train, epochs = 10000, learning_rate = 0.01)
 
-out = net.predict(x_train)
-print(out)
+    out = net.predict(x_train)
+    print(out)
+
+if __name__ == '__main__':
+    create_network(x_train, y_train)
