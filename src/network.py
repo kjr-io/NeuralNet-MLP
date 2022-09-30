@@ -50,5 +50,6 @@ class Network:
                 for layer in reversed(self.layers):
                     error = layer.backward_propagation(error, learning_rate)
 
-                # DO NOT FORGET TO UNCOMMENT
-                #print("epoch %d/%d   error=%f" % (i, epochs, err))
+
+                #print("epoch %d/%d   error=%f" % (_, epochs, err))
+        print(f'Error: {err}')
