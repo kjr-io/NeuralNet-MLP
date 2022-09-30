@@ -13,7 +13,9 @@ from loss_func import mse, mse_prime
 sys.path.append(str(f'{os.getcwd()}/input'))
 from binaryop_data import *
 
-x_train, y_train = xor_data()
+xor_x_train, xor_y_train = xor_data()
+or_x_train, or_y_train = or_data()
+and_x_train, and_y_train = and_data()
 
 
 # Creating the Network
@@ -31,4 +33,6 @@ def create_network(x_train, y_train):
     print(out)
 
 if __name__ == '__main__':
-    create_network(x_train, y_train)
+    create_network(xor_x_train, xor_y_train)
+    create_network(or_x_train, or_y_train)
+    create_network(and_x_train, and_y_train)
