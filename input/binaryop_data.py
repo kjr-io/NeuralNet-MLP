@@ -14,3 +14,5 @@ def and_data():
     x_train = np.array([[[0, 0]], [[0, 1]], [[1, 0]], [[1, 1]]])
     y_train = np.array([[[0]], [[0]], [[0]], [[1]]])
     return x_train, y_train
+
+

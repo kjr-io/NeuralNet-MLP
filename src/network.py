@@ -15,6 +15,7 @@ class Network:
     def predict(self, input_data):
         samples = len(input_data)
         result = []
+        result_clean = []
 
         for i in range(samples):
             output = input_data[i]
@@ -24,10 +25,18 @@ class Network:
 
             result.append(output)
 
-        return result
+        for item_ in result:
+            item = str(item_)
+
+            sliced = item[2:]
+            sliced = sliced[:-2]
+
+            result_clean.append(sliced)
+
+        return result_clean
 
     def fit(self, x_train, y_train, epochs, learning_rate):
-        for i in range(epochs):
+        for _ in range(epochs):
             err = 0
             for j in range(len(x_train)):
                 output = x_train[j]
@@ -41,5 +50,5 @@ class Network:
                 for layer in reversed(self.layers):
                     error = layer.backward_propagation(error, learning_rate)
 
-            if i % 100 == 0:
-                print("epoch %d/%d   error=%f" % (i, epochs, err))
+                # DO NOT FORGET TO UNCOMMENT
+                #print("epoch %d/%d   error=%f" % (i, epochs, err))
