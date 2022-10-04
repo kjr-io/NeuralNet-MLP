@@ -9,12 +9,12 @@ class FCLayer(Layer):
     def forward_propagation(self, input):
         self.input = input
         self.output = np.dot(input, self.weights) + self.biases
+        
         return self.output
 
     def backward_propagation(self, output_error, learning_rate):
         input_error = np.dot(output_error, self.weights.T)
         weights_error = np.dot(self.input.T, output_error)
-
         self.weights -= learning_rate * weights_error
         self.biases = self.biases - (learning_rate * output_error)
 

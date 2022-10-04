@@ -47,6 +47,13 @@ if __name__ == '__main__':
     df_1['y1'] = pd.DataFrame(preds)
     print(df_1, '\n')
 
+    print('-------- XOR TABLE --------')
+    preds = create_network(xor_x_train, xor_y_train, 0.001)
+    df_1 = construct_xor_df()
+    df_1['y1'] = pd.DataFrame(preds)
+    print(df_1, '\n')
+
+    '''
     print('-------- OR TABLE --------')
     preds = create_network(or_x_train, or_y_train, 0.01)
     df_2 = construct_or_df()
@@ -58,3 +65,4 @@ if __name__ == '__main__':
     df_3 = construct_and_df()
     df_3['y1'] = pd.DataFrame(preds)
     print(df_3, '\n')
+    '''

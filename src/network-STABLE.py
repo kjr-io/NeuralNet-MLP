@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 
 class Network:
     def __init__(self):
@@ -37,10 +36,8 @@ class Network:
         return result_clean
 
     def fit(self, x_train, y_train, epochs, learning_rate):
-        errStore = []
         for _ in range(epochs):
             err = 0
-    
             for j in range(len(x_train)):
                 output = x_train[j]
 
@@ -53,7 +50,6 @@ class Network:
                 for layer in reversed(self.layers):
                     error = layer.backward_propagation(error, learning_rate)
 
-            errStore.append(err)
-        plt.plot(range(epochs), errStore)
-        plt.savefig('test.png')
+
+                #print("epoch %d/%d   error=%f" % (_, epochs, err))
         print(f'Error: {err}')
