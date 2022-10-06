@@ -14,7 +14,7 @@ class ActivationLayer(Layer):
     def backward_propagation(self, output_error, learning_rate):
         return self.activation_prime(self.input) * output_error
 
-
+# Implementing Using Tanh Activation Function
 def tanh(x):
     return np.tanh(x)
 

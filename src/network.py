@@ -8,21 +8,34 @@ from construct_plot import *
 # Constructing the Neural Network Class
 class Network:
     def __init__(self):
+        ''' 
+        Initializing Neural Network
+        '''
         self.layers = []
         self.loss = None
         self.loss_prime = None
 
     def add(self, layer):
+        '''
+        Adding Layers to Neural Network
+        '''
         self.layers.append(layer)
 
     def use(self, loss, loss_prime):
+        '''
+        Using Loss & Loss Prime as Loss Functions
+        '''
         self.loss = loss
         self.loss_prime = loss_prime
 
     def predict(self, input_data):
+        '''
+        Running Predict Based on Input Data
+        '''
         samples = len(input_data)
         result = []
         result_clean = []
+
 
         for i in range(samples):
             output = input_data[i]
@@ -32,6 +45,7 @@ class Network:
 
             result.append(output)
 
+        # Cleaning Up Forward Propagation Output for Readability
         for item_ in result:
             item = str(item_)
 
@@ -43,6 +57,11 @@ class Network:
         return result_clean
 
     def fit(self, x_train, y_train, epochs, learning_rate, plot_details):
+        '''
+        Fitting the Model to the Data
+        Storing the Error in an Arr to Graph Using Matplotlib
+        Constructing Graph
+        '''
         errStore = []
         for _ in range(epochs):
             err = 0
@@ -61,12 +80,5 @@ class Network:
 
             errStore.append(err)
         
-
         construct_plot(epochs, errStore, learning_rate, plot_details)
-        '''
-        plt.plot(range(epochs), errStore, "-b", label=learning_rate)
-        plt.legend(loc='upper right')
-        plt.savefig('./output/test.png')
-        '''
-
         print(f'Error: {err}')
