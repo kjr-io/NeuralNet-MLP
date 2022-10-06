@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 sys.path.append(str(f'{os.getcwd()}/utils'))
 from construct_plot import *
 
+# Constructing the Neural Network Class
 class Network:
     def __init__(self):
         self.layers = []

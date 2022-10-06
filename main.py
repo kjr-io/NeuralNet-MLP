@@ -1,6 +1,7 @@
 import os
 import sys
 
+# Grabbing /model System Path for Imports
 sys.path.append(str(f'{os.getcwd()}/model'))
 from model import *
 
@@ -17,6 +18,7 @@ xor_x_train, xor_y_train = xor_data()
 or_x_train, or_y_train = or_data()
 and_x_train, and_y_train = and_data()
 
+# Running the NN with Varrying Learning Rates for Xor, Or, and And
 if __name__ == '__main__':
 
     # NN with Learning Rate of 0.1
