@@ -20,7 +20,7 @@ def create_network(x_train, y_train, lr, plot_details):
     net.add(ActivationLayer(tanh, tanh_prime))
 
     net.use(mse, mse_prime)
-    net.fit(x_train, y_train, epochs = 10000, learning_rate = lr, plot_details = plot_details)
+    net.fit(x_train, y_train, epochs = 5000, learning_rate = lr, plot_details = plot_details)
 
     return net.predict(x_train)
 
